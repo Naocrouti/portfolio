@@ -1,9 +1,21 @@
+/* Styles généraux et existants */
+* {
+    box-sizing: border-box; /* Bonne pratique générale */
+}
+
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Police par défaut pour le site */
     color: #333;
     line-height: 1.6;
 }
+
+main {
+     /* Ajoute un padding en haut pour compenser le header fixe */
+     /* Ajustez cette valeur si la hauteur du header change */
+    padding-top: 60px; /* Exemple: si header fait environ 60px de haut */
+}
+
 
 header {
     background: #222;
@@ -13,6 +25,10 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: 60px; /* Définir une hauteur aide pour le padding-top du main */
+    display: flex; /* Aide à centrer verticalement la nav si besoin */
+    align-items: center; /* Centre verticalement les éléments du header */
+    justify-content: center; /* Centre horizontalement la nav */
 }
 
 header nav ul {
@@ -31,23 +47,155 @@ header nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease; /* Effet sympa au survol */
 }
+header nav ul li a:hover {
+    color: #e0a0f0; /* Rappel de la couleur du formulaire */
+}
+
 
 section {
-    padding: 5rem 1rem;
-    text-align: center;
+    /* Padding vertical réduit car main a déjà un padding-top */
+    /* Padding horizontal conservé */
+    padding: 3rem 1rem;
+    text-align: center; /* Par défaut, les sections sont centrées */
+    min-height: 300px; /* Juste pour voir les sections */
 }
 
+/* Styles spécifiques pour certaines sections */
 #home {
     background: linear-gradient(to right, #6a11cb, #2575fc);
     color: #fff;
-    padding: 10rem 1rem;
+    /* padding-top est géré par 'main', on peut ajuster le padding bottom ici si besoin */
+    padding-top: 6rem; /* Plus de padding pour la première section */
+    padding-bottom: 6rem;
+    text-align: center;
 }
 
+#contact ul {
+    list-style: none;
+    padding: 0;
+}
+#contact li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- Styles spécifiques pour le formulaire de contact --- */
+
+/* Cibler la section spécifique pour potentiellement annuler le text-align center */
+#contact-form-section {
+    text-align: left; /* Annule le text-align: center de la règle 'section' générale */
+    padding: 3rem 1rem; /* Conserve un padding autour du bloc formulaire si besoin */
+    background-color: #f4f4f4; /* Optionnel: un fond légèrement différent pour la section elle-même */
+}
+
+/* Conteneur principal du formulaire */
+.form-container {
+    max-width: 800px; /* Largeur maximale du bloc formulaire */
+    margin: 0 auto; /* Centre le bloc formulaire horizontalement DANS la section */
+    padding: 30px;    /* Espace intérieur dans le conteneur sombre */
+    background-color: #1a1a1d; /* Fond sombre spécifique au formulaire */
+    color: #c3c3c3;       /* Couleur de texte par défaut dans le formulaire */
+    /* Utilise Courier Prime (ajouté via Google Fonts) ou fallback */
+    font-family: 'Courier Prime', Courier, monospace;
+    border-radius: 8px; /* Coins légèrement arrondis pour le conteneur */
+    /* text-align: left; est déjà défini sur la section parente */
+}
+
+/* Titre du formulaire (maintenant DANS .form-container) */
+.form-container h2 { /* Cible le h2 à l'intérieur du container */
+    color: #e0a0f0; /* Couleur rose pour le titre */
+    margin-top: 0; /* Enlève la marge haute par défaut du H2 */
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: left; /* Assure l'alignement à gauche du titre */
+}
+
+/* Reset pour le formulaire lui-même */
+.form-container .contact-form {
+    width: 100%;
+}
+
+/* Ligne contenant Nom et Email */
+.form-container .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+/* Groupe Label + Input */
+.form-container .form-group {
+    flex: 1; /* Partage l'espace disponible */
+    min-width: 200px; /* Largeur minimum avant de passer à la ligne */
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: #d0d0d0;
+    font-size: 0.9em;
+    padding-left: 5px;
+}
+
+/* Champs Input et Textarea */
+.form-container .form-control {
+    width: 100%;
+    padding: 15px;
+    background-color: #252528;
+    border: 1px solid #888;
+    border-radius: 15px;
+    color: #ffffff;
+    font-family: inherit; /* Hérite la police du .form-container (monospace) */
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+    /* box-sizing: border-box; est hérité de '*' */
+}
+
+.form-container .form-control:focus {
+    border-color: #e0a0f0;
+}
+
+/* Textarea spécifique */
+.form-container textarea.form-control {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Bouton Envoyer */
+.form-container .submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #f0d0e8;
+    color: #5a2a5a;
+    border: none;
+    border-radius: 15px;
+    font-family: inherit; /* Hérite la police du .form-container */
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    /* box-sizing: border-box; est hérité de '*' */
+}
+
+.form-container .submit-btn:hover {
+    background-color: #e8c0d8;
+}
+
+/* --- Fin des styles spécifiques au formulaire --- */
+
+
+/* Footer */
 footer {
     background: #222;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-    margin-top: 2rem;
+    margin-top: 2rem; /* Espace au-dessus du footer */
 }
