@@ -1,34 +1,92 @@
-/* Styles généraux et existants */
+/* 1. Définir les variables de couleur pour le thème par défaut (Clair) */
+:root {
+    --bg-color: #ffffff;         /* Fond principal (blanc) */
+    --text-color: #212529;       /* Texte principal (presque noir) */
+    --bg-secondary: #f8f9fa;     /* Fond secondaire (gris très clair - ex: header/footer/inputs) */
+    --text-secondary: #212529;   /* Texte secondaire (sombre sur fond clair) */
+    --border-color: #dee2e6;     /* Bordures (gris clair) */
+    --accent-color: #6a11cb;     /* Couleur d'accent (violet/bleu du #home) */
+    --accent-text-color: #ffffff;/* Texte sur la couleur d'accent (blanc) */
+    --link-color: #0d6efd;       /* Liens (bleu standard) */
+    --link-hover-color: #0a58ca; /* Liens au survol */
+
+    /* Variables spécifiques au formulaire (thème clair) */
+    --form-input-bg: #ffffff;
+    --form-input-text: #212529;
+    --form-input-border: #ced4da;
+    --form-label-color: #495057; /* Gris un peu plus foncé pour labels */
+    --form-button-bg: var(--accent-color); /* Bouton utilise l'accent */
+    --form-button-text: var(--accent-text-color);
+    --form-button-hover-bg: #5a0ca0; /* Un peu plus foncé que l'accent */
+    --form-focus-color: var(--accent-color); /* Bordure au focus */
+    --icon-filter: none; /* Pas de filtre en thème clair par défaut */
+}
+
+/* 2. Définir les variables pour le thème Sombre */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1a1a1d;         /* Fond principal (ton formulaire sombre) */
+        --text-color: #e9ecef;       /* Texte principal (gris très clair) */
+        --bg-secondary: #343a40;     /* Fond secondaire (gris sombre - header/footer/inputs) */
+        --text-secondary: #f8f9fa;   /* Texte secondaire (blanc cassé sur fond sombre) */
+        --border-color: #495057;     /* Bordures (gris sombre) */
+        --accent-color: #e0a0f0;     /* Couleur d'accent (rose du formulaire original) */
+        --accent-text-color: #5a2a5a;/* Texte sur la couleur d'accent (violet foncé) */
+        --link-color: #6ea8fe;       /* Liens (bleu clair) */
+        --link-hover-color: #9ec5fe; /* Liens au survol */
+
+        /* Variables spécifiques au formulaire (thème sombre) */
+        --form-input-bg: #252528; /* Ton gris input sombre */
+        --form-input-text: #f8f9fa;
+        --form-input-border: #6c757d;
+        --form-label-color: #adb5bd; /* Gris clair pour labels */
+        --form-button-bg: var(--accent-color); /* Bouton utilise l'accent rose */
+        --form-button-text: var(--accent-text-color);
+        --form-button-hover-bg: #d98cd1; /* Un peu plus foncé que l'accent rose */
+        --form-focus-color: var(--accent-color);
+        --icon-filter: invert(90%) sepia(15%) saturate(1000%) hue-rotate(250deg) brightness(100%) contrast(95%); /* Essai pour obtenir une teinte rose pâle depuis du noir */
+    }
+
+    /* Le dégradé #home peut nécessiter un ajustement en mode sombre si le texte blanc ne contraste pas assez */
+    #home {
+         /* Optionnel: ajuster le dégradé ou ajouter une surcouche sombre si besoin */
+        color: #ffffff; /* Assurer que le texte reste blanc */
+    }
+}
+
+/* 3. Appliquer les variables aux éléments */
+
 * {
-    box-sizing: border-box; /* Bonne pratique générale */
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif; /* Police par défaut pour le site */
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);   /* Utilise la variable */
+    color: var(--text-color);           /* Utilise la variable */
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition douce */
 }
 
 main {
-     /* Ajoute un padding en haut pour compenser le header fixe */
-     /* Ajustez cette valeur si la hauteur du header change */
-    padding-top: 60px; /* Exemple: si header fait environ 60px de haut */
+    padding-top: 60px; /* Compense le header fixe */
 }
 
-
 header {
-    background: #222;
-    color: #fff;
+    background: var(--bg-secondary); /* Utilise la variable */
+    color: var(--text-secondary);    /* Utilise la variable */
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    height: 60px; /* Définir une hauteur aide pour le padding-top du main */
-    display: flex; /* Aide à centrer verticalement la nav si besoin */
-    align-items: center; /* Centre verticalement les éléments du header */
-    justify-content: center; /* Centre horizontalement la nav */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color); /* Ajout bordure subtile */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 header nav ul {
@@ -44,81 +102,150 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #fff;
+    color: var(--text-secondary); /* Utilise la couleur du texte du header */
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease; /* Effet sympa au survol */
+    transition: color 0.3s ease;
 }
 header nav ul li a:hover {
-    color: #e0a0f0; /* Rappel de la couleur du formulaire */
+    color: var(--accent-color); /* Utilise la variable d'accent */
 }
-
 
 section {
-    /* Padding vertical réduit car main a déjà un padding-top */
-    /* Padding horizontal conservé */
+    /* Pas de fond spécifique, hérite du body */
     padding: 3rem 1rem;
-    text-align: center; /* Par défaut, les sections sont centrées */
-    min-height: 300px; /* Juste pour voir les sections */
+    text-align: center;
+    min-height: 100px;
+    border-bottom: 1px solid var(--border-color); /* Séparation subtile */
+}
+/* Enlever la bordure de la dernière section avant le footer */
+main section:last-of-type {
+    border-bottom: none;
 }
 
-/* Styles spécifiques pour certaines sections */
+
 #home {
+    /* Garde son dégradé spécifique */
     background: linear-gradient(to right, #6a11cb, #2575fc);
-    color: #fff;
-    /* padding-top est géré par 'main', on peut ajuster le padding bottom ici si besoin */
-    padding-top: 6rem; /* Plus de padding pour la première section */
+    color: #fff; /* Texte blanc sur dégradé */
+    padding-top: 6rem;
     padding-bottom: 6rem;
     text-align: center;
+    border-bottom: 1px solid transparent; /* Pas de bordure visible ici */
 }
 
 #contact ul {
     list-style: none;
     padding: 0;
+    text-align: left; /* Aligner la liste à gauche */
+    display: inline-block; /* Pour que text-align left fonctionne dans un parent centré */
 }
 #contact li {
     margin-bottom: 0.5rem;
 }
 
+/* --- Styles pour la section Contact Info (#contact) --- */
 
-/* --- Styles spécifiques pour le formulaire de contact --- */
+#contact {
+    text-align: center; /* Centre le contenu principal de la section */
+    /* Optionnel : Appliquer la police monospace si désiré pour cette section */
+    /* font-family: 'Courier Prime', Courier, monospace; */
+}
 
-/* Cibler la section spécifique pour potentiellement annuler le text-align center */
+#contact h3 {
+    margin-top: 3rem; /* Espace avant le titre des icônes */
+    margin-bottom: 2rem;
+    color: var(--text-color); /* S'adapte au thème */
+    font-family: 'Courier Prime', Courier, monospace; /* Police monospace pour ce titre */
+    font-size: 1.1em;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: space-around; /* Espace les éléments équitablement */
+    align-items: flex-start; /* Aligne le haut des éléments */
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur petits écrans */
+    gap: 2rem; /* Espace entre les éléments */
+    margin-top: 1rem;
+    padding: 0 1rem; /* Un peu d'espace sur les côtés */
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column; /* Aligne image, p, a verticalement */
+    align-items: center; /* Centre les éléments horizontalement */
+    text-align: center;
+    max-width: 150px; /* Limite la largeur de chaque bloc */
+    font-family: 'Courier Prime', Courier, monospace; /* Applique la police monospace */
+}
+
+.contact-item img {
+    width: 60px;  /* Taille de l'icône */
+    height: 60px; /* Taille de l'icône */
+    margin-bottom: 1rem; /* Espace sous l'icône */
+
+    /* Solution 1 : Style pour les icônes SVG (RECOMMANDÉ) */
+    color: var(--accent-color); /* Applique la couleur d'accent définie dans le thème */
+
+    /* --- Décommentez la ligne ci-dessous UNIQUEMENT si vous utilisez des PNG noirs --- */
+    /* filter: var(--icon-filter); */ /* Utilise une variable pour le filtre */
+    /* ----------------------------------------------------------------------------- */
+
+    transition: transform 0.3s ease; /* Effet au survol */
+}
+.contact-item:hover img {
+    transform: scale(1.1); /* Grossit légèrement au survol */
+}
+
+.contact-item p {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 0.25rem;
+    margin-top: 0;
+    color: var(--text-color); /* Utilise la couleur de texte du thème */
+}
+
+.contact-item a {
+    font-size: 0.9em;
+    color: var(--link-color); /* Utilise la couleur de lien du thème */
+    word-break: break-all; /* Permet aux longs emails/liens de passer à la ligne */
+}
+/* Assurez-vous que le survol du lien est aussi géré par les règles générales 'a:hover' */
+
+/* --- Fin des styles pour #contact --- */
+
+/* --- Styles pour le formulaire de contact (MAINTENANT INTÉGRÉ AU THÈME) --- */
+
 #contact-form-section {
-    text-align: left; /* Annule le text-align: center de la règle 'section' générale */
-    padding: 3rem 1rem; /* Conserve un padding autour du bloc formulaire si besoin */
-    background-color: #f4f4f4; /* Optionnel: un fond légèrement différent pour la section elle-même */
+    text-align: left; /* Aligner le contenu (labels) à gauche */
+     /* background-color: transparent; */ /* Pas besoin, hérite du body */
 }
 
-/* Conteneur principal du formulaire */
+/* Conteneur du formulaire - plus de style visuel propre, juste pour la mise en page */
 .form-container {
-    max-width: 800px; /* Largeur maximale du bloc formulaire */
-    margin: 0 auto; /* Centre le bloc formulaire horizontalement DANS la section */
-    padding: 30px;    /* Espace intérieur dans le conteneur sombre */
-    background-color: #1a1a1d; /* Fond sombre spécifique au formulaire */
-    color: #c3c3c3;       /* Couleur de texte par défaut dans le formulaire */
-    /* Utilise Courier Prime (ajouté via Google Fonts) ou fallback */
-    font-family: 'Courier Prime', Courier, monospace;
-    border-radius: 8px; /* Coins légèrement arrondis pour le conteneur */
-    /* text-align: left; est déjà défini sur la section parente */
+    max-width: 800px;
+    margin: 0 auto; /* Centre le bloc formulaire */
+    padding: 0; /* Pas de padding supplémentaire ici, la section en a déjà */
+    /* background-color: transparent; */ /* Hérite du body */
+    /* color: inherit; */               /* Hérite du body */
+    /* font-family: inherit; */         /* Hérite du body (Roboto) */
+    /* border-radius: 0; */             /* Pas d'arrondi spécifique */
 }
 
-/* Titre du formulaire (maintenant DANS .form-container) */
-.form-container h2 { /* Cible le h2 à l'intérieur du container */
-    color: #e0a0f0; /* Couleur rose pour le titre */
-    margin-top: 0; /* Enlève la marge haute par défaut du H2 */
+/* Titre DANS le formulaire */
+.form-container h2 {
+    color: var(--text-color); /* Utilise la couleur de texte principale */
+    margin-top: 0;
     margin-bottom: 25px;
     font-size: 1.8em;
     font-weight: bold;
-    text-align: left; /* Assure l'alignement à gauche du titre */
+    text-align: left;
 }
 
-/* Reset pour le formulaire lui-même */
 .form-container .contact-form {
     width: 100%;
 }
 
-/* Ligne contenant Nom et Email */
 .form-container .form-row {
     display: flex;
     gap: 20px;
@@ -126,76 +253,132 @@ section {
     margin-bottom: 15px;
 }
 
-/* Groupe Label + Input */
 .form-container .form-group {
-    flex: 1; /* Partage l'espace disponible */
-    min-width: 200px; /* Largeur minimum avant de passer à la ligne */
+    flex: 1;
+    min-width: 200px;
     margin-bottom: 15px;
 }
 
-/* Labels */
 .form-container label {
     display: block;
     margin-bottom: 8px;
-    color: #d0d0d0;
+    color: var(--form-label-color); /* Utilise la variable */
     font-size: 0.9em;
     padding-left: 5px;
+    font-weight: bold;
 }
 
-/* Champs Input et Textarea */
 .form-container .form-control {
     width: 100%;
     padding: 15px;
-    background-color: #252528;
-    border: 1px solid #888;
-    border-radius: 15px;
-    color: #ffffff;
-    font-family: inherit; /* Hérite la police du .form-container (monospace) */
+    background-color: var(--form-input-bg); /* Utilise la variable */
+    color: var(--form-input-text);       /* Utilise la variable */
+    border: 1px solid var(--form-input-border); /* Utilise la variable */
+    border-radius: 8px; /* Gardons un léger arrondi pour les champs */
+    font-family: inherit; /* Roboto par défaut */
     font-size: 1em;
     outline: none;
-    transition: border-color 0.3s ease;
-    /* box-sizing: border-box; est hérité de '*' */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .form-container .form-control:focus {
-    border-color: #e0a0f0;
+    border-color: var(--form-focus-color); /* Utilise la variable */
+    box-shadow: 0 0 0 0.2rem rgba(var(--form-focus-color), 0.25); /* Ajoute un halo au focus */
+    /* Note: rgba ne prend pas directement de variable CSS pour la couleur, c'est une limitation. */
+    /* On peut contourner ça mais c'est plus complexe. Pour l'instant, on utilise la var pour la bordure */
 }
 
-/* Textarea spécifique */
 .form-container textarea.form-control {
     resize: vertical;
     min-height: 150px;
 }
 
-/* Bouton Envoyer */
 .form-container .submit-btn {
     width: 100%;
     padding: 15px;
-    background-color: #f0d0e8;
-    color: #5a2a5a;
+    background-color: var(--form-button-bg); /* Utilise la variable */
+    color: var(--form-button-text);        /* Utilise la variable */
     border: none;
-    border-radius: 15px;
-    font-family: inherit; /* Hérite la police du .form-container */
+    border-radius: 8px;
+    font-family: inherit;
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 10px;
-    /* box-sizing: border-box; est hérité de '*' */
 }
 
 .form-container .submit-btn:hover {
-    background-color: #e8c0d8;
+    background-color: var(--form-button-hover-bg); /* Utilise la variable */
 }
 
 /* --- Fin des styles spécifiques au formulaire --- */
 
+/* Liens généraux */
+a {
+    color: var(--link-color); /* Utilise la variable */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color); /* Utilise la variable */
+    text-decoration: underline;
+}
 
 /* Footer */
 footer {
-    background: #222;
-    color: #fff;
+    background: var(--bg-secondary); /* Utilise la variable */
+    color: var(--text-secondary);    /* Utilise la variable */
     text-align: center;
     padding: 1rem 0;
-    margin-top: 2rem; /* Espace au-dessus du footer */
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color); /* Ajout bordure subtile */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Styles spécifiques pour les liens dans le footer si nécessaire */
+footer a {
+    color: var(--text-secondary); /* Utilise la couleur de texte du footer */
+}
+footer a:hover {
+    color: var(--accent-color); /* Utilise la couleur d'accent au survol */
+}
+
+/* Styles pour les icônes de contact */
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacement entre les items */
+    flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+    margin-top: 20px;
+}
+
+.contact-item {
+    text-align: center;
+    max-width: 150px; /* Limite la largeur de chaque item */
+}
+
+.contact-item img {
+    width: 50px; /* Largeur des logos */
+    height: 50px; /* Hauteur des logos */
+    object-fit: contain; /* Assure que l'image garde ses proportions */
+    margin-bottom: 10px; /* Espacement entre l'image et le texte */
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 1rem; /* Taille du texte sous le logo */
+    color: var(--text-color); /* Utilise la couleur de texte principale */
+}
+
+.contact-item a {
+    font-size: 0.9rem; /* Taille du lien */
+    color: var(--link-color); /* Couleur des liens */
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: var(--link-hover-color); /* Couleur au survol */
+    text-decoration: underline;
 }
