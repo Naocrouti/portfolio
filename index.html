@@ -206,5 +206,25 @@
     <footer>
         <p>Développé avec ❤️ par Livio RAYNARD - 2025</p>
     </footer>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function() {
+        emailjs.init("qp91vNn-bGBIJkfPe"); // Remplacez YOUR_USER_ID par votre ID utilisateur EmailJS
+      })();
+
+      document.querySelector('.contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche le rechargement de la page
+
+        const serviceID = 'service_zci1omj'; // Remplacez par votre Service ID EmailJS
+        const templateID = 'template_7s7yi6b'; // Remplacez par votre Template ID EmailJS
+
+        emailjs.sendForm(serviceID, templateID, this)
+          .then(() => {
+            alert('Message envoyé avec succès !');
+          }, (err) => {
+            alert('Échec de l\'envoi du message : ' + JSON.stringify(err));
+          });
+      });
+    </script>
 </body>
 </html>
