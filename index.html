@@ -121,6 +121,7 @@
         </section>
 
         <!-- Section Contact Info Personnalisée -->
+        <!-- Section Contact Info Personnalisée - MODIFIÉE -->
         <section id="contact">
             <h2>Me Contacter</h2>
             <p>Mon profil ou mes expériences vous intéressent ?</p>
@@ -131,36 +132,44 @@
             <h3>Retrouvez-moi facilement :</h3>
 
             <div class="contact-icons">
+                <!-- Email -->
                 <div class="contact-item">
-                    <img src="email-icon.svg" alt="Icône Email"> <!-- Assurez-vous que ce fichier existe -->
-                    <p>Email</p>
-                    <!-- Lien Email mis à jour -->
-                    <a href="mailto:livioraynard@gmail.com">livioraynard@gmail.com</a>
+                    <a href="mailto:livioraynard@gmail.com">  {/* L'<a> englobe img et p */}
+                        <img src="email-icon.svg" alt="Icône Email">
+                        <p>Email</p>
+                        {/* Optionnel: garder l'email visible mais non cliquable séparément */}
+                        {/* <span>livioraynard@gmail.com</span> */}
+                    </a>
                 </div>
+
+                <!-- LinkedIn -->
                 <div class="contact-item">
-                    <img src="linkedin-icon.svg" alt="Icône LinkedIn"> <!-- Assurez-vous que ce fichier existe -->
-                    <p>LinkedIn</p>
-                    <!-- Lien LinkedIn mis à jour -->
-                    <a href="https://www.linkedin.com/in/livioraynard" target="_blank">Livio Raynard</a>
+                     {/* L'<a> englobe img et p, avec target="_blank" */}
+                    <a href="https://www.linkedin.com/in/livioraynard" target="_blank" rel="noopener noreferrer">
+                        <img src="linkedin-icon.svg" alt="Icône LinkedIn">
+                        <p>LinkedIn</p>
+                    </a>
                 </div>
+
+                <!-- GitHub -->
                 <div class="contact-item">
-                    <img src="github-mark.svg" alt="Icône GitHub"> <!-- Assurez-vous que ce fichier existe -->
-                    <p>GitHub</p>
-                    <!-- Lien GitHub mis à jour -->
-                    <a href="https://github.com/Naocrouti" target="_blank">Livio Raynard</a>
+                     {/* L'<a> englobe img et p, avec target="_blank" */}
+                    <a href="https://github.com/Naocrouti" target="_blank" rel="noopener noreferrer">
+                        <img src="github-mark.svg" alt="Icône GitHub">
+                        <p>GitHub</p>
+                    </a>
                 </div>
+
+                <!-- Instagram -->
                 <div class="contact-item">
-                    <img src="instagram-icon.svg" alt="Icône Instagram"> <!-- Assurez-vous que ce fichier existe -->
-                    <p>Instagram</p>
-                     <!-- Lien Instagram mis à jour -->
-                    <a href="https://www.instagram.com/livio_rd" target="_blank">@livio_.rd</a>
+                     {/* L'<a> englobe img et p, avec target="_blank" */}
+                    <a href="https://www.instagram.com/livio_rd" target="_blank" rel="noopener noreferrer">
+                        <img src="instagram-icon.svg" alt="Icône Instagram">
+                        <p>Instagram</p>
+                    </a>
                 </div>
-                 <!-- Ajouter d'autres profils si pertinent (ex: téléphone si souhaité) -->
-                 <!-- <div class="contact-item">
-                    <img src="phone-icon.svg" alt="Icône Téléphone">
-                    <p>Téléphone</p>
-                    <a>07 71 56 73 34</a>  <!-- Pas un lien cliquable tel quel -->
-                 <!-- </div> -->
+                <!-- Note: Le texte de lien original (@livio_rd, Livio Raynard) a été supprimé car redondant maintenant que le bloc est cliquable -->
+
             </div>
 
              <!-- Intérêts ajoutés ici pour compléter la section contact/à propos -->
