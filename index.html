@@ -209,14 +209,14 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
       (function() {
-        emailjs.init("qp91vNn-bGBIJkfPe"); // Remplacez YOUR_USER_ID par votre ID utilisateur EmailJS
+        emailjs.init("qp91vNn-bGBIJkfPe"); // Public Key
       })();
 
       document.querySelector('.contact-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Empêche le rechargement de la page
 
-        const serviceID = 'service_zci1omj'; // Remplacez par votre Service ID EmailJS
-        const templateID = 'template_e8c5orr'; // Remplacez par votre Template ID EmailJS
+        const serviceID = 'service_zci1omj'; // Gmail Service ID
+        const templateID = 'template_47tb52k'; // Template ID
 
         emailjs.sendForm(serviceID, templateID, this)
           .then(() => {
