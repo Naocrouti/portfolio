@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-exports.handler = async function (event, context) {
+exports.handler = async function(event, context) {
   const { name, email, message } = JSON.parse(event.body);
 
   const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -20,16 +20,14 @@ exports.handler = async function (event, context) {
     })
   });
 
-  if (response.ok) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true })
-    };
-  } else {
-    const err = await response.text();
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err })
-    };
-  }
+  // Récupère le message de réponse ou l'erreur
+  const text = await response.text();
+
+  // Vérifie si la réponse est ok (code 2xx)
+  return {
+    statusCode: response.status,
+    body: response.ok
+      ? JSON.stringify({ success: true }) // Si c'est OK, on renvoie un succès
+      : JSON.stringify({ error: text })   // Sinon, on renvoie l'erreur
+  };
 };
