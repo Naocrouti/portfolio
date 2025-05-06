@@ -206,31 +206,32 @@
     <footer>
         <p>Développé avec ❤️ par Livio RAYNARD - 2025</p>
     </footer>
-    <script type="module">
-        import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-      
-        emailjs.init("qp91vNn-bGBIJkfPe"); // Ta clé publique EmailJS ici
-      
-        document.querySelector('.contact-form').addEventListener('submit', function(event) {
-          event.preventDefault();
-      
-          const serviceID = 'service_zci1omj';
-          const templateID = 'template_47tb52k';
-      
-          const templateParams = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value,
-            time: new Date().toLocaleString(),
-          };
-      
-          emailjs.send(serviceID, templateID, templateParams)
-            .then(() => {
-              alert('Message envoyé avec succès !');
-            }, (err) => {
-              alert('Échec de l\'envoi du message : ' + JSON.stringify(err));
-            });
-        });
-      </script>      
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("qp91vNn-bGBIJkfPe"); // Ta clé publique
+  })();
+
+  document.querySelector('.contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const serviceID = 'service_zci1omj';
+    const templateID = 'template_47tb52k';
+
+    const templateParams = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value,
+      time: new Date().toLocaleString(),
+    };
+
+    emailjs.send(serviceID, templateID, templateParams)
+      .then(() => {
+        alert('Message envoyé avec succès !');
+      }, (err) => {
+        alert('Échec de l\'envoi du message : ' + JSON.stringify(err));
+      });
+  });
+</script>
 </body>
 </html>
