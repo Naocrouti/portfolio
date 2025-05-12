@@ -3,47 +3,64 @@
 /* 1. Variables de Couleur (Thèmes Clair/Sombre) - Peu de changements ici, c'était déjà bien */
 :root {
     --bg-color: #ffffff;
-    --text-color: #333; /* Texte un peu moins noir pour un look plus doux */
-    --text-muted: #6c757d; /* Couleur pour texte secondaire/discret */
+    --text-color: #333;
+    /* Texte un peu moins noir pour un look plus doux */
+    --text-muted: #6c757d;
+    /* Couleur pour texte secondaire/discret */
     --bg-secondary: #f8f9fa;
     --text-secondary: #212529;
     --border-color: #dee2e6;
-    --accent-color: #4a00e0; /* Violet un peu plus vibrant */
-    --accent-secondary-color: #8e2de2; /* Pour les dégradés ou accents secondaires */
+    --accent-color: #4a00e0;
+    /* Violet un peu plus vibrant */
+    --accent-secondary-color: #8e2de2;
+    /* Pour les dégradés ou accents secondaires */
     --accent-text-color: #ffffff;
-    --link-color: #4a00e0; /* Utiliser l'accent pour les liens */
-    --link-hover-color: #3a00b3; /* Version plus foncée de l'accent */
+    --link-color: #4a00e0;
+    /* Utiliser l'accent pour les liens */
+    --link-hover-color: #3a00b3;
+    /* Version plus foncée de l'accent */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-    --border-radius-sm: 0.25rem; /* 4px */
-    --border-radius-md: 0.5rem;  /* 8px */
+    --border-radius-sm: 0.25rem;
+    /* 4px */
+    --border-radius-md: 0.5rem;
+    /* 8px */
 
     /* Formulaire (Thème Clair) */
     --form-input-bg: #ffffff;
     --form-input-text: #333;
     --form-input-border: #ced4da;
     --form-label-color: #495057;
-    --form-button-bg: linear-gradient(to right, var(--accent-secondary-color), var(--accent-color)); /* Dégradé sur le bouton */
+    --form-button-bg: linear-gradient(to right, var(--accent-secondary-color), var(--accent-color));
+    /* Dégradé sur le bouton */
     --form-button-text: var(--accent-text-color);
-    --form-button-hover-bg: linear-gradient(to right, #7e1cc2, #3a00b3); /* Dégradé plus sombre */
+    --form-button-hover-bg: linear-gradient(to right, #7e1cc2, #3a00b3);
+    /* Dégradé plus sombre */
     --form-focus-color: var(--accent-color);
     --icon-filter: none;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: #121212; /* Noir profond standard pour Dark Mode */
-        --text-color: #e0e0e0; /* Texte blanc cassé */
+        --bg-color: #121212;
+        /* Noir profond standard pour Dark Mode */
+        --text-color: #e0e0e0;
+        /* Texte blanc cassé */
         --text-muted: #adb5bd;
-        --bg-secondary: #1e1e1e; /* Gris très sombre pour fonds secondaires */
+        --bg-secondary: #1e1e1e;
+        /* Gris très sombre pour fonds secondaires */
         --text-secondary: #f8f9fa;
-        --border-color: #333; /* Bordure plus sombre */
-        --accent-color: #bb86fc; /* Violet standard pour Material Dark */
+        --border-color: #333;
+        /* Bordure plus sombre */
+        --accent-color: #bb86fc;
+        /* Violet standard pour Material Dark */
         --accent-secondary-color: #cf9bff;
-        --accent-text-color: #121212; /* Texte sombre sur accent clair */
+        --accent-text-color: #121212;
+        /* Texte sombre sur accent clair */
         --link-color: #bb86fc;
         --link-hover-color: #d0aaff;
-        --shadow-sm: 0 1px 3px rgba(255, 255, 255, 0.05), 0 1px 2px rgba(255, 255, 255, 0.03); /* Ombres inversées */
+        --shadow-sm: 0 1px 3px rgba(255, 255, 255, 0.05), 0 1px 2px rgba(255, 255, 255, 0.03);
+        /* Ombres inversées */
         --shadow-md: 0 4px 6px -1px rgba(255, 255, 255, 0.08), 0 2px 4px -1px rgba(255, 255, 255, 0.04);
 
         /* Formulaire (Thème Sombre) */
@@ -58,35 +75,51 @@
         /* Icon Filter peut être nécessaire si vous utilisez des PNG noirs */
         /* --icon-filter: invert(85%) sepia(10%) saturate(500%) hue-rotate(200deg) brightness(95%) contrast(90%); */
     }
+
+    .form-container {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        /* Ombre plus douce et claire */
+        border: 1px solid var(--border-color);
+        /* Bordure adaptée au mode sombre */
+    }
 }
 
 /* 2. Styles Généraux */
 * {
     box-sizing: border-box;
-    margin: 0; /* Reset margins */
-    padding: 0; /* Reset paddings */
+    margin: 0;
+    /* Reset margins */
+    padding: 0;
+    /* Reset paddings */
 }
 
 html {
-    scroll-behavior: smooth; /* Défilement doux pour les ancres */
+    scroll-behavior: smooth;
+    /* Défilement doux pour les ancres */
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.7; /* Augmentation interligne pour lisibilité */
-    font-size: 16px; /* Base font size */
+    line-height: 1.7;
+    /* Augmentation interligne pour lisibilité */
+    font-size: 16px;
+    /* Base font size */
     transition: background-color 0.3s ease, color 0.3s ease;
-    -webkit-font-smoothing: antialiased; /* Meilleur rendu des polices */
+    -webkit-font-smoothing: antialiased;
+    /* Meilleur rendu des polices */
     -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-    padding-top: 80px; /* Espace pour header fixe + marge */
+    padding-top: 80px;
+    /* Espace pour header fixe + marge */
     width: 100%;
-    max-width: 1100px; /* Limite largeur contenu pour lisibilité sur grands écrans */
-    margin: 0 auto; /* Centre le contenu */
+    max-width: 1100px;
+    /* Limite largeur contenu pour lisibilité sur grands écrans */
+    margin: 0 auto;
+    /* Centre le contenu */
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -95,17 +128,21 @@ main {
 header {
     background: var(--bg-secondary);
     color: var(--text-secondary);
-    padding: 0 1rem; /* Padding horizontal */
+    padding: 0 1rem;
+    /* Padding horizontal */
     position: fixed;
     width: 100%;
     top: 0;
-    left: 0; /* Assurer qu'il prend toute la largeur */
+    left: 0;
+    /* Assurer qu'il prend toute la largeur */
     z-index: 1000;
-    height: 70px; /* Hauteur légèrement augmentée */
+    height: 70px;
+    /* Hauteur légèrement augmentée */
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-sm); /* Ajout ombre subtile */
+    box-shadow: var(--shadow-sm);
+    /* Ajout ombre subtile */
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -117,7 +154,8 @@ header nav ul {
 }
 
 header nav ul li {
-    margin: 0 1.2rem; /* Espacement augmenté */
+    margin: 0 1.2rem;
+    /* Espacement augmenté */
 }
 
 header nav ul li a {
@@ -125,8 +163,10 @@ header nav ul li a {
     text-decoration: none;
     font-weight: bold;
     font-size: 0.95rem;
-    padding: 0.5rem 0; /* Zone cliquable verticale */
-    position: relative; /* Pour le pseudo-élément */
+    padding: 0.5rem 0;
+    /* Zone cliquable verticale */
+    position: relative;
+    /* Pour le pseudo-élément */
     transition: color 0.3s ease;
 }
 
@@ -154,26 +194,37 @@ header nav ul li a:hover::after {
 
 /* 4. Sections */
 section {
-    padding: 4rem 1rem; /* Plus d'espace vertical */
-    /* text-align: center; */ /* On va plutôt aligner à gauche par défaut */
+    padding: 4rem 1rem;
+    /* Plus d'espace vertical */
+    /* text-align: center; */
+    /* On va plutôt aligner à gauche par défaut */
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+
     /* Supprimer la bordure de la dernière section */
-    &:last-of-type { /* Syntaxe moderne pour cibler le dernier */
+    &:last-of-type {
+        /* Syntaxe moderne pour cibler le dernier */
         border-bottom: none;
     }
 }
 
 section h2 {
-    font-size: 2.2rem; /* Taille augmentée */
-    font-weight: 700; /* Gras */
-    color: var(--accent-color); /* Titres de section en couleur accent */
-    margin-bottom: 2.5rem; /* Plus d'espace sous le titre */
-    text-align: center; /* Centrer les titres de section */
-    font-family: 'Roboto', sans-serif; /* Assurer la police */
+    font-size: 2.2rem;
+    /* Taille augmentée */
+    font-weight: 700;
+    /* Gras */
+    color: var(--accent-color);
+    /* Titres de section en couleur accent */
+    margin-bottom: 2.5rem;
+    /* Plus d'espace sous le titre */
+    text-align: center;
+    /* Centrer les titres de section */
+    font-family: 'Roboto', sans-serif;
+    /* Assurer la police */
     /* Optionnel: Ajouter une ligne sous le titre */
     position: relative;
-    display: inline-block; /* Nécessaire pour centrer avec la ligne */
+    display: inline-block;
+    /* Nécessaire pour centrer avec la ligne */
     left: 50%;
     transform: translateX(-50%);
 }
@@ -181,10 +232,12 @@ section h2 {
 section h2::after {
     content: '';
     position: absolute;
-    width: 60px; /* Largeur de la ligne */
+    width: 60px;
+    /* Largeur de la ligne */
     height: 3px;
     background: var(--accent-secondary-color);
-    bottom: -10px; /* Espace entre titre et ligne */
+    bottom: -10px;
+    /* Espace entre titre et ligne */
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
@@ -194,48 +247,64 @@ section h2::after {
 section h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--text-color); /* Couleur normale pour sous-titres */
+    color: var(--text-color);
+    /* Couleur normale pour sous-titres */
     margin-top: 2rem;
     margin-bottom: 1.5rem;
 }
 
 section p {
     margin-bottom: 1rem;
-    color: var(--text-muted); /* Texte de paragraphe un peu plus discret */
-    max-width: 750px; /* Limiter largeur des paragraphes pour lisibilité */
-    /* margin-left: auto; */ /* Décommentez si vous voulez centrer les paragraphes sous titres centrés */
+    color: var(--text-muted);
+    /* Texte de paragraphe un peu plus discret */
+    max-width: 750px;
+    /* Limiter largeur des paragraphes pour lisibilité */
+    /* margin-left: auto; */
+    /* Décommentez si vous voulez centrer les paragraphes sous titres centrés */
     /* margin-right: auto; */
 }
 
 /* Amélioration des listes */
 section ul {
-    list-style: none; /* Enlever puces par défaut */
-    padding-left: 0; /* Enlever padding par défaut */
+    list-style: none;
+    /* Enlever puces par défaut */
+    padding-left: 0;
+    /* Enlever padding par défaut */
 }
 
 section ul li {
     position: relative;
-    padding-left: 25px; /* Espace pour la puce personnalisée */
-    margin-bottom: 0.8rem; /* Espacement entre items */
+    padding-left: 25px;
+    /* Espace pour la puce personnalisée */
+    margin-bottom: 0.8rem;
+    /* Espacement entre items */
     color: var(--text-muted);
 }
+
 /* Puce personnalisée */
 section ul li::before {
-    content: '✓'; /* Ou '\2022' pour un point, '▹' pour une flèche */
+    content: '✓';
+    /* Ou '\2022' pour un point, '▹' pour une flèche */
     position: absolute;
     left: 0;
     top: 1px;
-    color: var(--accent-color); /* Puce de la couleur accent */
+    color: var(--accent-color);
+    /* Puce de la couleur accent */
     font-weight: bold;
     font-size: 1.1em;
 }
+
 section ul li strong {
-    color: var(--text-color); /* Mettre en évidence les éléments en gras */
+    color: var(--text-color);
+    /* Mettre en évidence les éléments en gras */
     font-weight: 600;
 }
-section ul li em { /* Style pour les italiques (ex: dates, lieux) */
+
+section ul li em {
+    /* Style pour les italiques (ex: dates, lieux) */
     color: var(--text-muted);
-    font-style: normal; /* Enlever l'italique par défaut si non désiré */
+    font-style: normal;
+    /* Enlever l'italique par défaut si non désiré */
     font-size: 0.9em;
 }
 
@@ -246,31 +315,40 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
     padding: 6rem 1rem;
     text-align: center;
     border-bottom: none;
-    min-height: 60vh; /* Prend plus de hauteur */
+    min-height: 60vh;
+    /* Prend plus de hauteur */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 #home h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
 }
+
 #home p {
     font-size: 1.3rem;
-    color: rgba(255, 255, 255, 0.9); /* Blanc un peu transparent */
+    color: rgba(255, 255, 255, 0.9);
+    /* Blanc un peu transparent */
     max-width: 600px;
 }
 
 /* 5. Section Contact (#contact & Formulaire) */
 
-#contact h2, #contact-form-section h2 {
-     text-align: center; /* Centrer explicitement */
+#contact h2,
+#contact-form-section h2 {
+    text-align: center;
+    /* Centrer explicitement */
 }
-#contact h2::after, #contact-form-section h2::after {
-     /* Assurer que la ligne est aussi centrée */
-     left: 50%; transform: translateX(-50%);
+
+#contact h2::after,
+#contact-form-section h2::after {
+    /* Assurer que la ligne est aussi centrée */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #contact h3 {
@@ -279,15 +357,17 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
     margin-bottom: 2rem;
     font-size: 1.3rem;
     color: var(--text-color);
-    font-family: 'Courier Prime', Courier, monospace; /* Garder le monospace ici */
+    font-family: 'Courier Prime', Courier, monospace;
+    /* Garder le monospace ici */
 }
 
 .contact-icons {
     display: flex;
-    justify-content: center; /* Centrer les icônes */
+    justify-content: center;
+    /* Centrer les icônes */
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 2.5rem; /* Espace augmenté */
+    gap: 2.5rem;
     margin-top: 2rem;
     padding: 0 1rem;
 }
@@ -297,31 +377,34 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 120px; /* Largeur ajustée */
+    max-width: 120px;
     font-family: 'Courier Prime', Courier, monospace;
     transition: transform 0.3s ease;
 }
+
 .contact-item:hover {
-    transform: translateY(-5px); /* Léger déplacement vers le haut au survol */
+    transform: translateY(-5px);
 }
 
 .contact-item img {
-    width: 50px; /* Taille ajustée */
+    width: 50px;
     height: 50px;
     margin-bottom: 0.8rem;
     /* Pour SVG */
     color: var(--accent-color);
-     /* Pour PNG (optionnel) */
-     /* filter: var(--icon-filter); */
-    transition: transform 0.3s ease; /* Doublon, mais pas grave */
+    /* Pour PNG (optionnel) */
+    /* filter: var(--icon-filter); */
+    transition: transform 0.3s ease;
+    /* Doublon, mais pas grave */
 }
+
 .contact-item:hover img {
     transform: scale(1.1);
 }
 
 .contact-item p {
     font-weight: bold;
-    font-size: 1em; /* Taille ajustée */
+    font-size: 1em;
     margin-bottom: 0.25rem;
     margin-top: 0;
     color: var(--text-color);
@@ -331,19 +414,25 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
     font-size: 0.9em;
     color: var(--link-color);
     word-break: break-all;
-    text-decoration: none; /* Pas de soulignement par défaut */
-}
-.contact-item a:hover {
-    color: var(--link-hover-color);
-    text-decoration: underline; /* Soulignement au survol */
+    text-decoration: none;
+    /* Pas de soulignement par défaut */
 }
 
-#contact h3:last-of-type { /* Pour le titre "Centres d'intérêt" */
-     font-family: 'Roboto', sans-serif; /* Revenir à la police normale */
-     font-size: 1.5rem;
-     color: var(--text-color);
+.contact-item a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+    /* Soulignement au survol */
 }
-#contact p:last-of-type { /* Pour le paragraphe des centres d'intérêt */
+
+#contact h3:last-of-type {
+    /* Pour le titre "Centres d'intérêt" */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+#contact p:last-of-type {
+    /* Pour le paragraphe des centres d'intérêt */
     text-align: center;
     max-width: 750px;
     margin-left: auto;
@@ -353,27 +442,29 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
 
 /* Formulaire */
 #contact-form-section {
-    background-color: var(--bg-secondary); /* Léger fond différent pour la section formulaire */
+    background-color: var(--bg-color);
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
 
 .form-container {
-    max-width: 700px; /* Largeur ajustée */
+    max-width: 700px;
     margin: 0 auto;
-    padding: 2.5rem; /* Padding interne au conteneur */
-    background-color: var(--bg-color); /* Retour au fond principal pour le formulaire lui-même */
+    padding: 2.5rem;
+    background-color: var(--bg-color);
     border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md); /* Ombre plus prononcée */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
 }
 
 .form-container h2 {
-     color: var(--accent-color);
-     margin-top: 0;
-     margin-bottom: 2rem;
-     font-size: 1.8em;
-     text-align: center; /* Centrer le titre du formulaire */
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1.8em;
+    text-align: center;
 }
+
 .form-container h2::after {
     /* Hérite du style section h2::after */
 }
@@ -391,30 +482,30 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
 
 .form-container .form-group {
     flex: 1;
-    min-width: calc(50% - 10px); /* Pour 2 colonnes avec gap */
+    min-width: calc(50% - 10px);
     margin-bottom: 1rem;
 }
-/* Le groupe message prend toute la largeur */
-.form-container .form-group:has(textarea) { /* Cibler le parent du textarea */
+
+.form-container .form-group:has(textarea) {
     min-width: 100%;
 }
 
 .form-container label {
     display: block;
-    margin-bottom: 0.5rem; /* Espacement réduit */
+    margin-bottom: 0.5rem;
     color: var(--form-label-color);
     font-size: 0.9em;
-    font-weight: 600; /* Labels un peu plus gras */
-    padding-left: 0; /* Pas besoin de padding */
+    font-weight: 600;
+    padding-left: 0;
 }
 
 .form-container .form-control {
     width: 100%;
-    padding: 12px 15px; /* Padding ajusté */
+    padding: 12px 15px;
     background-color: var(--form-input-bg);
     color: var(--form-input-text);
     border: 1px solid var(--form-input-border);
-    border-radius: var(--border-radius-sm); /* Arrondi plus léger */
+    border-radius: var(--border-radius-sm);
     font-family: inherit;
     font-size: 1em;
     outline: none;
@@ -423,17 +514,15 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
 
 .form-container .form-control:focus {
     border-color: var(--form-focus-color);
-    box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb, 74, 0, 224), 0.2); /* Utilisation de la couleur accent pour l'ombre focus */
-    /* Ajout d'une variable RGB pour la couleur accent si possible, sinon coder en dur la version rgba */
+    box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb, 74, 0, 224), 0.2);
 }
-/* Pour que le box-shadow fonctionne, il faut définir la couleur accent en RGB */
+
 :root {
-    /* ... autres variables ... */
     --accent-color-rgb: 74, 0, 224;
 }
+
 @media (prefers-color-scheme: dark) {
     :root {
-        /* ... autres variables ... */
         --accent-color-rgb: 187, 134, 252;
     }
 }
@@ -441,15 +530,15 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
 
 .form-container textarea.form-control {
     resize: vertical;
-    min-height: 120px; /* Hauteur réduite */
+    min-height: 120px;
 }
 
 .form-container .submit-btn {
-    display: inline-block; /* Permet de ne pas prendre toute la largeur si on veut */
-    width: auto; /* Ajuste la largeur au contenu + padding */
-    padding: 12px 30px; /* Padding ajusté */
+    display: inline-block;
+    width: auto;
+    padding: 12px 30px;
     background-image: var(--form-button-bg);
-    background-size: 200% auto; /* Pour l'effet de transition du dégradé */
+    background-size: 200% auto;
     color: var(--form-button-text);
     border: none;
     border-radius: var(--border-radius-md);
@@ -457,17 +546,17 @@ section ul li em { /* Style pour les italiques (ex: dates, lieux) */
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.4s ease; /* Transition plus longue pour le fond */
+    transition: all 0.4s ease;
     margin-top: 1rem;
-    text-transform: uppercase; /* Texte en majuscules */
-    letter-spacing: 1px; /* Espacement lettres */
+    text-transform: uppercase;
+    letter-spacing: 1px;
     box-shadow: var(--shadow-sm);
 }
 
 .form-container .submit-btn:hover {
-    background-position: right center; /* Change la position du dégradé */
+    background-position: right center;
     box-shadow: var(--shadow-md);
-    transform: translateY(-2px); /* Léger soulèvement */
+    transform: translateY(-2px);
 }
 
 
@@ -477,30 +566,34 @@ a {
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 a:hover {
     color: var(--link-hover-color);
-    text-decoration: none; /* On gère le soulignement au cas par cas (ex: nav, contact-item) */
+    text-decoration: none;
 }
 
 /* 7. Footer */
 footer {
     background: var(--bg-secondary);
-    color: var(--text-muted); /* Texte du footer plus discret */
+    color: var(--text-muted);
     text-align: center;
-    padding: 2rem 1rem; /* Padding augmenté */
-    margin-top: 4rem; /* Marge augmentée */
+    padding: 2rem 1rem;
+    margin-top: 4rem;
     border-top: 1px solid var(--border-color);
     font-size: 0.9em;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
 footer p {
-     margin-bottom: 0;
-     color: var(--text-muted); /* Assurer la couleur discrète */
+    margin-bottom: 0;
+    color: var(--text-muted);
 }
+
 footer a {
-    color: var(--accent-color); /* Liens du footer en couleur accent */
+    color: var(--accent-color);
     font-weight: 600;
 }
+
 footer a:hover {
     color: var(--link-hover-color);
     text-decoration: underline;
@@ -509,26 +602,31 @@ footer a:hover {
 /* 8. Responsive Design */
 @media (max-width: 768px) {
     main {
-        padding-top: 70px; /* Ajuster au header */
+        padding-top: 70px;
     }
+
     header {
-        height: 60px; /* Header plus petit sur mobile */
+        height: 60px;
         padding: 0 0.5rem;
     }
+
     header nav ul li {
-        margin: 0 0.8rem; /* Moins d'espace entre les liens nav */
+        margin: 0 0.8rem;
     }
+
     header nav ul li a {
         font-size: 0.9rem;
     }
 
     section {
-        padding: 3rem 1rem; /* Moins de padding vertical */
+        padding: 3rem 1rem;
     }
+
     section h2 {
-        font-size: 1.8rem; /* Titres plus petits */
+        font-size: 1.8rem;
         margin-bottom: 2rem;
     }
+
     section h3 {
         font-size: 1.3rem;
     }
@@ -536,25 +634,29 @@ footer a:hover {
     #home h1 {
         font-size: 2.5rem;
     }
+
     #home p {
         font-size: 1.1rem;
     }
 
     .form-container {
-        padding: 1.5rem; /* Moins de padding interne */
+        padding: 1.5rem;
     }
+
     .form-container .form-row {
-        flex-direction: column; /* Empiler les champs sur mobile */
-        gap: 0; /* Pas de gap quand empilé */
+        flex-direction: column;
+        gap: 0;
     }
+
     .form-container .form-group {
-        min-width: 100%; /* Chaque groupe prend toute la largeur */
+        min-width: 100%;
         margin-bottom: 1rem;
     }
 
     .contact-icons {
-        gap: 1.5rem; /* Moins d'espace entre icônes */
+        gap: 1.5rem;
     }
+
     .contact-item {
         max-width: 100px;
     }
